@@ -3,12 +3,6 @@
 'use strict';
 
 
-var input = '';
-process.stdin.setEncoding('utf8');
-process.stdin.on('readable', function() { input += process.stdin.read(); });
-process.stdin.on('end', function() { process.stdout.write(decorate(input, '', [])); });
-
-
 // split :: String -> [String]
 function split(s) {
   return s.split(/[ ]+/).filter(Boolean);
@@ -103,3 +97,6 @@ function close() {
 function wrap(className, text) {
   return open(className) + escape(text) + close();
 }
+
+
+process.stdout.write(decorate(String(require('fs').readFileSync(process.argv[2])), '', []));

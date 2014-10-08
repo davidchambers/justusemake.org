@@ -9,20 +9,28 @@ process.stdin.on('readable', function() { input += process.stdin.read(); });
 process.stdin.on('end', function() { process.stdout.write(decorate(input, '', [])); });
 
 
-var functionNames = [
-  'abspath', 'addprefix', 'addsuffix', 'and', 'basename', 'call', 'dir',
-  'error', 'eval', 'file', 'filter', 'filter-out', 'findstring', 'firstword',
-  'flavor', 'foreach', 'guile', 'if', 'info', 'join', 'lastword', 'notdir',
-  'or', 'origin', 'patsubst', 'realpath', 'shell', 'sort', 'strip', 'subst',
-  'suffix', 'value', 'warning', 'wildcard', 'word', 'wordlist', 'words',
-];
+// split :: String -> [String]
+function split(s) {
+  return s.split(/[ ]+/).filter(Boolean);
+}
 
-var specialTargets = [
-  '.DEFAULT', '.DELETE_ON_ERROR', '.EXPORT_ALL_VARIABLES', '.IGNORE',
-  '.INTERMEDIATE', '.LOW_RESOLUTION_TIME', '.NOTPARALLEL', '.ONESHELL',
-  '.PHONY', '.POSIX', '.PRECIOUS', '.SECONDARY', '.SECONDEXPANSION',
-  '.SILENT', '.SUFFIXES',
-];
+var functionNames = split('\
+  abspath     addprefix   addsuffix   and         basename    call        \
+  dir         error       eval        file        filter      filter-out  \
+  findstring  firstword   flavor      foreach     guile       if          \
+  info        join        lastword    notdir      or          origin      \
+  patsubst    realpath    shell       sort        strip       subst       \
+  suffix      value       warning     wildcard    word        wordlist    \
+  words                                                                   \
+');
+
+var specialTargets = split('\
+  .DEFAULT                .DELETE_ON_ERROR        .EXPORT_ALL_VARIABLES   \
+  .IGNORE                 .INTERMEDIATE           .LOW_RESOLUTION_TIME    \
+  .NOTPARALLEL            .ONESHELL               .PHONY                  \
+  .POSIX                  .PRECIOUS               .SECONDARY              \
+  .SECONDEXPANSION        .SILENT                 .SUFFIXES               \
+');
 
 var decorate = function recur(input, output, stack) {
   var $;

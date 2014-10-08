@@ -2,20 +2,68 @@
 <head>
   <meta charset="utf-8">
   <title>Just Use Make</title>
-  <style>
-    h1 {
-      margin: 96px 0 0;
-      font: bold 48px/1.25 "Helvetica Neue", Helvetica, sans-serif;
-      text-align: center;
-    }
-    p {
-      text-align: center;
-      margin-top: 8em;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Just Use Make. Seriously.</h1>
-  <p><a href=".">But what if ... ?</a></p>
+  <h1>Just Use Make</h1>
+  <p>Here is a paragraph.</p>
+  <pre><code class="language-make">COFFEE = node_modules/.bin/coffee
+DOCTEST = node_modules/.bin/doctest --module commonjs
+XYZ = node_modules/.bin/xyz --message X.Y.Z --tag X.Y.Z --repo git@github.com:davidchambers/orthogonal.git --script scripts/prepublish
+
+SRC_IMAGES = <span class="group">$(<span class="function">shell</span> find src/svg -type f)</span>
+SVG_IMAGES = <span class="group">$(<span class="function">patsubst</span> src/svg/%.coffee,lib/svg/%.svg,<span class="group">$(SRC_IMAGES)</span>)</span>
+LIB = lib/orthogonal.js <span class="group">$(SVG_IMAGES)</span>
+
+HAI = hello
+
+
+<span class="target">.PHONY:</span> all
+all: <span class="group">$(LIB)</span>
+
+<span class="target">.PHONY:</span> foo
+foo:
+<span class="recipe">	echo <span class="string">'<span class="group">$(<span class="function">shell</span> echo <span class="string">'<span class="group">${HAI}</span>'</span>)</span>'</span></span>
+
+lib/%.js: src/%.coffee
+<span class="recipe">	<span class="group">$(COFFEE)</span> --compile --output <span class="string">'<span class="group">$(@D)</span>'</span> -- <span class="string">'<span class="auto-var">$&lt;</span>'</span>
+	<span class="string">'<span class="group">${Foo}</span> $$BAR'</span> <span class="string">"<span class="group">$(Foo)</span> $$BAR"</span></span>
+
+<span class="comment"># Percent 2 F : %2F</span>
+lib/%.svg: src/%.coffee
+<span class="recipe">	mkdir -p <span class="string">'<span class="group">$(@D)</span>'</span>
+	<span class="comment"># comment</span>
+	hello &lt; world
+	echo <span class="string">'foo
+# not a comment
+bar'</span>
+	<span class="group">$(COFFEE)</span> <span class="string">'<span class="auto-var">$&lt;</span>'</span> &gt;<span class="string">'<span class="auto-var">$@</span>'</span></span>
+
+
+<span class="target">.PHONY:</span> clean
+clean:
+<span class="recipe">	rm -f -- <span class="group">$(LIB)</span></span>
+
+
+<span class="target">.PHONY:</span> release-major release-minor release-patch
+release-major: LEVEL = major
+release-minor: LEVEL = minor
+release-patch: LEVEL = patch
+
+release-major release-minor release-patch:
+<span class="recipe">	<span class="silent">@</span><span class="group">$(XYZ)</span> --increment <span class="group">$(LEVEL)</span></span>
+
+
+<span class="target">.PHONY:</span> setup
+setup:
+<span class="recipe">	npm install
+	make clean
+	git update-index --assume-unchanged lib/orthogonal.js</span>
+
+
+<span class="target">.PHONY:</span> test
+test:
+<span class="recipe">	find src -name <span class="string">'*.coffee'</span> -not -path <span class="string">'src/svg/*'</span> -print0 | xargs -0 <span class="group">$(DOCTEST)</span></span>
+</code></pre>
 </body>
 </html>

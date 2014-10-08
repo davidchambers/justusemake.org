@@ -1,0 +1,27 @@
+body {
+  padding: 16px;
+  font: 16px/1.25 Georgia, serif;
+}
+code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+pre {
+  max-width: 800px;
+  border-radius: 3px;
+  background: #f7f7f7;
+  padding: 16px;
+  color: #333;
+  overflow: scroll;
+}
+pre > code {
+  font-size: 12px;
+  line-height: 16px;
+}
+.comment  { color: #999; }
+.silent   { color: #999; }
+.function { color: #f63; font-weight: bold; }
+.target   { color: #693; font-weight: bold; }
+.recipe   { color: #369; }
+.string   { color: #39c; }
+.group    { color: #c93; }
+.auto-var { color: #c93; }

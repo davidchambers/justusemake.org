@@ -20,7 +20,8 @@ pre > code {
 .comment  { color: #999; }
 .silent   { color: #999; }
 .function { color: #f63; font-weight: bold; }
-.target   { color: #693; font-weight: bold; }
+.target.special { color: #693; }
+.targets  { font-weight: bold; }
 .recipe   { color: #369; }
 .string   { color: #39c; }
 .group    { color: #c93; }

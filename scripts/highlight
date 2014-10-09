@@ -2,6 +2,9 @@
 
 'use strict';
 
+var fs = require('fs');
+var path = require('path');
+
 
 // split :: String -> [String]
 function split(s) {
@@ -98,5 +101,13 @@ function wrap(className, text) {
   return open(className) + escape(text) + close();
 }
 
+// readFile :: String -> String
+function readFile(filename) {
+  return String(fs.readFileSync(path.join(__dirname, '..', filename)));
+}
 
-process.stdout.write(decorate(String(require('fs').readFileSync(process.argv[2])), '', []));
+
+process.stdout.write(readFile(process.argv[2]).replace(
+  /[(]include ([^)]*)[)]/g,
+  function(match, filename) { return decorate(readFile(filename), '', []); }
+));

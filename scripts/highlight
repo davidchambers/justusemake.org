@@ -50,7 +50,7 @@ var decorate = function recur(input, output, stack) {
     return recur($[1], output + '}' + close(), butlast(stack));
   } else if (last(stack) === '\t' && ($ = /^\n(?!\t)([\s\S]*)$/.exec(input))) {
     return recur($[1], output + close() + '\n', butlast(stack));
-  } else if (($ = /^('|")([\s\S]*)$/.exec(input))) {
+  } else if (last(stack) !== "'" && last(stack) !== '"' && ($ = /^('|")([\s\S]*)$/.exec(input))) {
     return recur($[2], output + open('string') + $[1], concat(stack, [$[1]]));
   } else if (($ = /^([$][({])([^ ]*)([\s\S]*)$/.exec(input))) {
     return functionNames.indexOf($[2]) >= 0 ?

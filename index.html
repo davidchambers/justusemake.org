@@ -26,18 +26,18 @@ HAI = hello
 <span class="recipe">	echo <span class="string">'<span class="group">$(<span class="function">shell</span> echo <span class="string">'<span class="group">${HAI}</span>'</span>)</span>'</span></span>
 
 <span class="targets"><span class="target">lib/%.js</span>:</span> src/%.coffee
-<span class="recipe">	<span class="group">$(COFFEE)</span> --compile --output <span class="string">'<span class="group">$(@D)</span>'</span> -- <span class="string">'<span class="auto-var">$&lt;</span>'</span>
+<span class="recipe">	<span class="group">$(COFFEE)</span> --compile --output <span class="string">'<span class="auto-var" title="The directory part of the name of the target, with the trailing slash removed">$(@D)</span>'</span> -- <span class="string">'<span class="auto-var" title="The name of the first prerequisite">$&lt;</span>'</span>
 	<span class="string">'<span class="group">${Foo}</span> $$BAR'</span> <span class="string">"<span class="group">$(Foo)</span> $$BAR"</span></span>
 
 <span class="comment"># Percent 2 F : %2F</span>
 <span class="targets"><span class="target">lib/%.svg</span>:</span> src/%.coffee
-<span class="recipe">	mkdir -p <span class="string">'<span class="group">$(@D)</span>'</span>
+<span class="recipe">	mkdir -p <span class="string">'<span class="auto-var" title="The directory part of the name of the target, with the trailing slash removed">$(@D)</span>'</span>
 	<span class="comment"># comment</span>
 	hello &lt; world
 	echo <span class="string">'foo\
 # not a comment\
 bar'</span>
-	<span class="group">$(COFFEE)</span> <span class="string">'<span class="auto-var">$&lt;</span>'</span> &gt;<span class="string">'<span class="auto-var">$@</span>'</span></span>
+	<span class="group">$(COFFEE)</span> <span class="string">'<span class="auto-var" title="The name of the first prerequisite">$&lt;</span>'</span> &gt;<span class="string">'<span class="auto-var" title="The name of the target of the rule">$@</span>'</span></span>
 
 
 <span class="targets"><span class="target special">.PHONY</span>:</span> clean

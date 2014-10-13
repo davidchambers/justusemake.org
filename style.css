@@ -34,14 +34,14 @@ code.language-make span[data-content]:hover:after {
   font-style: italic;
   color: #999;
 }
-span[data-content="$@"]:hover:after    { content: " -- name of target"; }
-span[data-content="$%"]:hover:after    { content: " -- name of target (an archive member)"; }
-span[data-content="$<"]:hover:after    { content: " -- name of first prerequisite"; }
-span[data-content="$?"]:hover:after    { content: " -- names of prerequisites newer than target"; }
-span[data-content="$^"]:hover:after    { content: " -- names of prerequisites, without duplicates"; }
-span[data-content="$+"]:hover:after    { content: " -- names of prerequisites"; }
-span[data-content="$|"]:hover:after    { content: " -- names of order-only prerequisites"; }
-span[data-content="$*"]:hover:after    { content: " -- part of name corresponding to ‘%’ in target pattern"; }
+span[data-content="$@"]:hover:after { content: " -- name of target"; }
+span[data-content="$%"]:hover:after { content: " -- name of target (an archive member)"; }
+span[data-content="$<"]:hover:after { content: " -- name of first prerequisite"; }
+span[data-content="$?"]:hover:after { content: " -- names of prerequisites newer than target"; }
+span[data-content="$^"]:hover:after { content: " -- names of prerequisites, without duplicates"; }
+span[data-content="$+"]:hover:after { content: " -- names of prerequisites"; }
+span[data-content="$|"]:hover:after { content: " -- names of order-only prerequisites"; }
+span[data-content="$*"]:hover:after { content: " -- part of name corresponding to ‘%’ in target pattern"; }
 span[data-content="$(@D)"]:hover:after { content: " -- directory name of target"; }
 span[data-content="$(%D)"]:hover:after { content: " -- directory name of target (an archive member)"; }
 span[data-content="$(<D)"]:hover:after { content: " -- directory name of first prerequisite"; }

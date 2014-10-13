@@ -1,0 +1,22 @@
+$@: name of target
+$%: name of target (an archive member)
+$<: name of first prerequisite
+$?: names of prerequisites newer than target
+$^: names of prerequisites, without duplicates
+$+: names of prerequisites
+$|: names of order-only prerequisites
+$*: part of name corresponding to ‘%’ in target pattern
+$(@D): directory name of target
+$(%D): directory name of target (an archive member)
+$(<D): directory name of first prerequisite
+$(?D): directory names of prerequisites newer than target
+$(^D): directory names of prerequisites, without duplicates
+$(+D): directory names of prerequisites
+$(*D): directory part of stem
+$(@F): name of target, without directory name
+$(%F): name of target (an archive member), without directory name
+$(<F): name of first prerequisite, without directory name
+$(?F): names of prerequisites newer than target, without directory names
+$(^F): names of prerequisites, without directory names, with duplicates removed
+$(+F): names of prerequisites, without directory names
+$(*F): stem, without directory name

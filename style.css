@@ -27,9 +27,32 @@ pre > code {
 .group    { color: #c93; }
 .auto-var { color: #c93; }
 
-code.language-make span[title] {
+code.language-make span[data-content] {
   cursor: default;
 }
-code.language-make span[title]:hover {
-  outline: 1px solid #f63;
+code.language-make span[data-content]:hover:after {
+  font-style: italic;
+  color: #999;
 }
+span[data-content="$@"]:hover:after    { content: " -- name of target"; }
+span[data-content="$%"]:hover:after    { content: " -- name of target (an archive member)"; }
+span[data-content="$<"]:hover:after    { content: " -- name of first prerequisite"; }
+span[data-content="$?"]:hover:after    { content: " -- names of prerequisites newer than target"; }
+span[data-content="$^"]:hover:after    { content: " -- names of prerequisites, without duplicates"; }
+span[data-content="$+"]:hover:after    { content: " -- names of prerequisites"; }
+span[data-content="$|"]:hover:after    { content: " -- names of order-only prerequisites"; }
+span[data-content="$*"]:hover:after    { content: " -- part of name corresponding to ‘%’ in target pattern"; }
+span[data-content="$(@D)"]:hover:after { content: " -- directory name of target"; }
+span[data-content="$(%D)"]:hover:after { content: " -- directory name of target (an archive member)"; }
+span[data-content="$(<D)"]:hover:after { content: " -- directory name of first prerequisite"; }
+span[data-content="$(?D)"]:hover:after { content: " -- directory names of prerequisites newer than target"; }
+span[data-content="$(^D)"]:hover:after { content: " -- directory names of prerequisites, without duplicates"; }
+span[data-content="$(+D)"]:hover:after { content: " -- directory names of prerequisites"; }
+span[data-content="$(*D)"]:hover:after { content: " -- directory part of stem"; }
+span[data-content="$(@F)"]:hover:after { content: " -- name of target, without directory name"; }
+span[data-content="$(%F)"]:hover:after { content: " -- name of target (an archive member), without directory name"; }
+span[data-content="$(<F)"]:hover:after { content: " -- name of first prerequisite, without directory name"; }
+span[data-content="$(?F)"]:hover:after { content: " -- names of prerequisites newer than target, without directory names"; }
+span[data-content="$(^F)"]:hover:after { content: " -- names of prerequisites, without directory names, with duplicates removed"; }
+span[data-content="$(+F)"]:hover:after { content: " -- names of prerequisites, without directory names"; }
+span[data-content="$(*F)"]:hover:after { content: " -- stem, without directory name"; }

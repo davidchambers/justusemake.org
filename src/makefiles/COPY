@@ -1,0 +1,9 @@
+ASSETS = $(patsubst src/%,dist/%,$(shell find src/assets -type f | sort))
+
+
+.PHONY: build
+build: $(ASSETS)
+
+dist/assets/%: src/assets/%
+	@mkdir -p '$(@D)'
+	cp '$<' '$@'

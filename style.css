@@ -25,13 +25,16 @@ pre > code {
 }
 .comment  { color: #999; }
 .silent   { color: #999; }
-.function { color: #f63; font-weight: bold; }
+.function,
+.keyword  { color: #f63; font-weight: bold; }
 .target.special { color: #693; }
 .targets  { font-weight: bold; }
 .recipe   { color: #369; }
 .string   { color: #39c; }
 .group    { color: #c93; }
 .auto-var { color: #c93; }
+.special-value { font-weight: bold; }
+.number   { color: #693; }
 
 code.language-make span[data-content] {
   cursor: default;

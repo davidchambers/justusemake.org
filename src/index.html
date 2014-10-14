@@ -37,7 +37,7 @@
       into <b>dist/assets</b>.
     </p>
   </div>
-  <pre><code class="language-make">(include src/makefiles/COPY)</code></pre>
+  (include :language make src/makefiles/COPY)
   <div class="prose">
     <p>
       In Make, the first step is to generate a list of files to build.
@@ -74,26 +74,7 @@
       to tell Grunt which files we want to copy and to where:
     </p>
   </div>
-  <pre><code class="language-javascript">module.exports = function(grunt) {
-
-  grunt.initConfig({
-    copy: {
-      main: {
-        expand: true,
-        cwd: 'src/assets/',
-        src: '**',
-        dest: 'dist/assets/',
-        flatten: true,
-        filter: 'isFile',
-      },
-    },
-  });
-
-  grunt.loadNpmTasks('grunt-contrib-copy');
-
-  grunt.registerTask('default', ['copy']);
-
-};</code></pre>
+  (include :language javascript src/javascript/grunt-init-config.js)
   <div class="prose">
     <p>
       This is a <em>lot</em> of configuration for a straightforward task.
@@ -138,10 +119,10 @@ make: Nothing to be done for `build'.</code></pre>
     </p>
   </div>
   <pre>...</pre>
-  <pre><code class="language-make">(include src/makefiles/COFFEE)</code></pre>
+  (include :language make src/makefiles/COFFEE)
   <div class="prose">
     <p>Grunt example goes here.</p>
   </div>
-  <pre><code class="language-make">(include src/makefiles/EXAMPLE_1)</code></pre>
+  (include :language make src/makefiles/EXAMPLE_1)
 </body>
 </html>

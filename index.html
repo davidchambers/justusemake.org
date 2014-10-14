@@ -83,26 +83,27 @@
       to tell Grunt which files we want to copy and to where:
     </p>
   </div>
-  <pre><code class="language-javascript">module.exports = function(grunt) {
+  <pre><code class="language-javascript">module.exports = <span class="keyword">function</span>(grunt) {
 
   grunt.initConfig({
     copy: {
       main: {
-        expand: true,
-        cwd: 'src/assets/',
-        src: '**',
-        dest: 'dist/assets/',
-        flatten: true,
-        filter: 'isFile',
+        expand: <span class="special-value">true</span>,
+        cwd: <span class="string">'src/assets/'</span>,
+        src: <span class="string">'**'</span>,
+        dest: <span class="string">'dist/assets/'</span>,
+        flatten: <span class="special-value">true</span>,
+        filter: <span class="string">'isFile'</span>,
       },
     },
   });
 
-  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks(<span class="string">'grunt-contrib-copy'</span>);
 
-  grunt.registerTask('default', ['copy']);
+  grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'copy'</span>]);
 
-};</code></pre>
+};
+</code></pre>
   <div class="prose">
     <p>
       This is a <em>lot</em> of configuration for a straightforward task.

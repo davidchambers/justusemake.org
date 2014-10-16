@@ -59,7 +59,9 @@
       Grunt requires a bit of set-up. First, install Grunt itself:
     </p>
   </div>
-  <pre><code class="language-shell">npm install -g grunt-cli</code></pre>
+  (code-block :language console)
+    $ npm install -g grunt-cli
+  (end-code-block)
   <div class="prose">
     <p>
       To copy files, we’ll need the
@@ -67,7 +69,9 @@
       plugin:
     </p>
   </div>
-  <pre><code class="language-shell">npm install grunt-contrib-copy</code></pre>
+  (code-block :language console)
+    $ npm install grunt-contrib-copy
+  (end-code-block)
   <div class="prose">
     <p>
       Next, we create a file named <b>Gruntfile.js</b> with some configuration
@@ -81,17 +85,7 @@
       What’s more, Grunt is about as smart as its name suggests:
     </p>
   </div>
-  <pre><code>$ grunt
-Running "copy:main" (copy) task
-Copied 3 files
-
-Done, without errors.
-
-$ grunt
-Running "copy:main" (copy) task
-Copied 3 files
-
-Done, without errors.</code></pre>
+  (include :language console src/console/grunt-copy)
   <div class="prose">
     <p>
       Grunt goes ahead and copies the files each time. Make, thanks to the
@@ -99,13 +93,7 @@ Done, without errors.</code></pre>
       if one or more of its dependencies has changed:
     </p>
   </div>
-  <pre><code>$ make
-cp 'src/assets/images/bar.png' 'dist/assets/images/bar.png'
-cp 'src/assets/images/baz.png' 'dist/assets/images/baz.png'
-cp 'src/assets/images/foo.png' 'dist/assets/images/foo.png'
-
-$ make
-make: Nothing to be done for `build'.</code></pre>
+  (include :language console src/console/make-copy)
   <div class="prose">
     <p>
       Right now our build step involves copying three images, but as our

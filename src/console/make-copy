@@ -1,0 +1,7 @@
+$ make
+cp 'src/assets/images/bar.png' 'dist/assets/images/bar.png'
+cp 'src/assets/images/baz.png' 'dist/assets/images/baz.png'
+cp 'src/assets/images/foo.png' 'dist/assets/images/foo.png'
+
+$ make
+make: Nothing to be done for `build'.

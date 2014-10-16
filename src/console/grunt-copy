@@ -1,0 +1,11 @@
+$ grunt
+Running "copy:main" (copy) task
+Copied 3 files
+
+Done, without errors.
+
+$ grunt
+Running "copy:main" (copy) task
+Copied 3 files
+
+Done, without errors.

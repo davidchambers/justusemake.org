@@ -15,6 +15,18 @@ fs.writeFileSync(process.argv[3], read(process.argv[2]).replace(
       '</pre>',
     ].join('');
   }
+).replace(
+  /[(]code-block :language ([^)]*)[)]\n([\s\S]*?)[ ]*[(]end-code-block[)]/g,
+  function(_, language, input) {
+    var indent = /^[ ]*/.exec(input)[0].length;
+    return [
+      '<pre>',
+      '<code class="language-', language, '">',
+      require('../lib/decorate/' + language)(input.replace(new RegExp('^[ ]{' + indent + '}', 'gm'), ''), '', []),
+      '</code>',
+      '</pre>',
+    ].join('');
+  }
 ));
 
 // read :: String -> String

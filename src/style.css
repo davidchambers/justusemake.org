@@ -35,6 +35,8 @@ pre > code {
 .auto-var { color: #c93; }
 .special-value { font-weight: bold; }
 .number   { color: #693; }
+.command  { font-weight: bold; }
+.output   { color: #999; }
 
 code.language-make span[data-content] {
   cursor: default;

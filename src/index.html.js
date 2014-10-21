@@ -50,7 +50,7 @@
   <meta charset="utf-8">
   <title>Just Use Make</title>
   <style>
-! _(read('style.css').replace(/^(?!$)/gm, '    '))
+! _(read('src/style.css').replace(/^(?!$)/gm, '    '))
 !
 ! Object.keys(automatic_variables)
 ! .map(function(key) {
@@ -94,6 +94,11 @@
       <a href="http://gruntjs.com/">Grunt</a>, a popular JavaScript task
       runner.
     </p>
+    <div id="versus">
+! _('      <img alt="GNU" src="data:image/svg+xml;base64,' + fs.readFileSync('src/gnu.min.svg').toString('base64') + '" height="240">')
+      <span>vs</span>
+! _('      <img alt="Grunt" src="data:image/svg+xml;base64,' + fs.readFileSync('src/grunt.min.svg').toString('base64') + '" height="240">')
+    </div>
     <p>
       Let’s start with the simplest task a build tool must support: copying
       files. We wish to copy everything in the <b>src/assets</b> directory

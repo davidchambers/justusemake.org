@@ -45,6 +45,14 @@ code.language-make span[data-content]:hover:after {
   font-style: italic;
   color: #999;
 }
+
+#github-banner img {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 149px;
+  height: 149px;
+}
 span[data-content="$@"]:hover:after { content: " -- name of target"; }
 span[data-content="$%"]:hover:after { content: " -- name of target (an archive member)"; }
 span[data-content="$<"]:hover:after { content: " -- name of first prerequisite"; }

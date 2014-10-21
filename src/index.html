@@ -1,3 +1,19 @@
+! var fs = require('fs')
+!
+! function read(filename) {
+!   return fs.readFileSync(filename, {encoding: 'utf8'})
+! }
+!
+! function decorate(language, text) {
+!   return '  ' + [
+!     '<pre>',
+!     '<code class="language-', language, '">',
+!     require('./lib/decorate/' + language)(text, '', []),
+!     '</code>',
+!     '</pre>',
+!   ].join('')
+! }
+!
 <html>
 <head>
   <meta charset="utf-8">
@@ -40,7 +56,7 @@
       into <b>dist/assets</b>.
     </p>
   </div>
-  (include :language make src/makefiles/COPY)
+!=  decorate('make', read('src/makefiles/COPY'))
   <div class="prose">
     <p>
       In Make, the first step is to generate a list of files to build.
@@ -62,9 +78,7 @@
       Grunt requires a bit of set-up. First, install Grunt itself:
     </p>
   </div>
-  (code-block :language console)
-    $ npm install -g grunt-cli
-  (end-code-block)
+!=  decorate('console', '$ npm install -g grunt-cli')
   <div class="prose">
     <p>
       To copy files, we’ll need the
@@ -72,23 +86,21 @@
       plugin:
     </p>
   </div>
-  (code-block :language console)
-    $ npm install grunt-contrib-copy
-  (end-code-block)
+!=  decorate('console', '$ npm install grunt-contrib-copy')
   <div class="prose">
     <p>
       Next, we create a file named <b>Gruntfile.js</b> with some configuration
       to tell Grunt which files we want to copy and to where:
     </p>
   </div>
-  (include :language javascript src/javascript/grunt-init-config.js)
+!=  decorate('javascript', read('src/javascript/grunt-init-config.js'))
   <div class="prose">
     <p>
       This is a <em>lot</em> of configuration for a straightforward task.
       What’s more, Grunt is about as smart as its name suggests:
     </p>
   </div>
-  (include :language console src/console/grunt-copy)
+!=  decorate('console', read('src/console/grunt-copy'))
   <div class="prose">
     <p>
       Grunt goes ahead and copies the files each time. Make, thanks to the
@@ -96,7 +108,7 @@
       if one or more of its dependencies has changed:
     </p>
   </div>
-  (include :language console src/console/make-copy)
+!=  decorate('console', read('src/console/make-copy'))
   <div class="prose">
     <p>
       Right now our build step involves copying three images, but as our
@@ -110,10 +122,10 @@
     </p>
   </div>
   <pre>...</pre>
-  (include :language make src/makefiles/COFFEE)
+!=  decorate('make', read('src/makefiles/COFFEE'))
   <div class="prose">
     <p>Grunt example goes here.</p>
   </div>
-  (include :language make src/makefiles/EXAMPLE_1)
+!=  decorate('make', read('src/makefiles/EXAMPLE_1'))
 </body>
 </html>

@@ -2,7 +2,130 @@
 <head>
   <meta charset="utf-8">
   <title>Just Use Make</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      max-width: 800px;
+      padding: 16px;
+      font: 16px/1.25 Palatino, serif;
+    }
+    code {
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    }
+    .prose code {
+      border-radius: 3px;
+      background: rgba(0, 0, 0, 0.04);
+      padding: 0.2em 0.4em;
+      font-size: 85%;
+    }
+    pre {
+      border-radius: 3px;
+      background: #f7f7f7;
+      padding: 16px;
+      color: #333;
+      overflow: scroll;
+    }
+    pre > code {
+      font-size: 12px;
+      line-height: 16px;
+    }
+    .comment  { color: #999; }
+    .silent   { color: #999; }
+    .function,
+    .keyword  { color: #f63; font-weight: bold; }
+    .target.special { color: #693; }
+    .targets  { font-weight: bold; }
+    .recipe   { color: #369; }
+    .string   { color: #39c; }
+    .group    { color: #c93; }
+    .auto-var { color: #c93; }
+    .special-value { font-weight: bold; }
+    .number   { color: #693; }
+    .command  { font-weight: bold; }
+    .output   { color: #999; }
+
+    code.language-make span[data-content] {
+      cursor: default;
+    }
+    code.language-make span[data-content]:hover:after {
+      font-style: italic;
+      color: #999;
+    }
+
+    #github-banner img {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 149px;
+      height: 149px;
+    }
+
+    span[data-content="$@"]:hover:after {
+      content: "name of target";
+    }
+    span[data-content="$%"]:hover:after {
+      content: "name of target (an archive member)";
+    }
+    span[data-content="$<"]:hover:after {
+      content: "name of first prerequisite";
+    }
+    span[data-content="$?"]:hover:after {
+      content: "names of prerequisites newer than target";
+    }
+    span[data-content="$^"]:hover:after {
+      content: "names of prerequisites, without duplicates";
+    }
+    span[data-content="$+"]:hover:after {
+      content: "names of prerequisites";
+    }
+    span[data-content="$|"]:hover:after {
+      content: "names of order-only prerequisites";
+    }
+    span[data-content="$*"]:hover:after {
+      content: "part of name corresponding to ‘%’ in target pattern";
+    }
+    span[data-content="$(@D)"]:hover:after {
+      content: "directory name of target";
+    }
+    span[data-content="$(%D)"]:hover:after {
+      content: "directory name of target (an archive member)";
+    }
+    span[data-content="$(<D)"]:hover:after {
+      content: "directory name of first prerequisite";
+    }
+    span[data-content="$(?D)"]:hover:after {
+      content: "directory names of prerequisites newer than target";
+    }
+    span[data-content="$(^D)"]:hover:after {
+      content: "directory names of prerequisites, without duplicates";
+    }
+    span[data-content="$(+D)"]:hover:after {
+      content: "directory names of prerequisites";
+    }
+    span[data-content="$(*D)"]:hover:after {
+      content: "directory part of stem";
+    }
+    span[data-content="$(@F)"]:hover:after {
+      content: "name of target, without directory name";
+    }
+    span[data-content="$(%F)"]:hover:after {
+      content: "name of target (an archive member), without directory name";
+    }
+    span[data-content="$(<F)"]:hover:after {
+      content: "name of first prerequisite, without directory name";
+    }
+    span[data-content="$(?F)"]:hover:after {
+      content: "names of prerequisites newer than target, without directory names";
+    }
+    span[data-content="$(^F)"]:hover:after {
+      content: "names of prerequisites, without directory names, with duplicates removed";
+    }
+    span[data-content="$(+F)"]:hover:after {
+      content: "names of prerequisites, without directory names";
+    }
+    span[data-content="$(*F)"]:hover:after {
+      content: "stem, without directory name";
+    }
+  </style>
 </head>
 <body>
   <a id="github-banner" href="https://github.com/davidchambers/justusemake.org">

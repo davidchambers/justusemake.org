@@ -1,5 +1,30 @@
 ! var fs = require('fs')
 !
+! var automatic_variables = {
+!   '$@': 'name of target',
+!   '$%': 'name of target (an archive member)',
+!   '$<': 'name of first prerequisite',
+!   '$?': 'names of prerequisites newer than target',
+!   '$^': 'names of prerequisites, without duplicates',
+!   '$+': 'names of prerequisites',
+!   '$|': 'names of order-only prerequisites',
+!   '$*': 'part of name corresponding to ‘%’ in target pattern',
+!   '$(@D)': 'directory name of target',
+!   '$(%D)': 'directory name of target (an archive member)',
+!   '$(<D)': 'directory name of first prerequisite',
+!   '$(?D)': 'directory names of prerequisites newer than target',
+!   '$(^D)': 'directory names of prerequisites, without duplicates',
+!   '$(+D)': 'directory names of prerequisites',
+!   '$(*D)': 'directory part of stem',
+!   '$(@F)': 'name of target, without directory name',
+!   '$(%F)': 'name of target (an archive member), without directory name',
+!   '$(<F)': 'name of first prerequisite, without directory name',
+!   '$(?F)': 'names of prerequisites newer than target, without directory names',
+!   '$(^F)': 'names of prerequisites, without directory names, with duplicates removed',
+!   '$(+F)': 'names of prerequisites, without directory names',
+!   '$(*F)': 'stem, without directory name',
+! }
+!
 ! function read(filename) {
 !   return fs.readFileSync(filename, {encoding: 'utf8'})
 ! }
@@ -18,7 +43,17 @@
 <head>
   <meta charset="utf-8">
   <title>Just Use Make</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+!=  read('style.css').replace(/^(?!$)/gm, '    ')
+!
+!   Object.keys(automatic_variables).forEach(function(key) {
+!     console.log([
+!       '    span[data-content="' + key + '"]:hover:after {',
+!       '      content: "' + automatic_variables[key] + '";',
+!       '    }',
+!     ].join('\n'))
+!   })
+  </style>
 </head>
 <body>
   <a id="github-banner" href="https://github.com/davidchambers/justusemake.org">

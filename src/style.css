@@ -69,14 +69,23 @@ code.language-make span[data-content]:hover:after {
   margin: 1.5em 0;
   overflow: hidden;
 }
-#versus img {
+#versus > a {
   display: block;
   float: left;
 }
-#versus img ~ img {
+#versus > a ~ a {
   float: right;
 }
-#versus span {
+#versus > a:focus {
+  background: #fc6;
+}
+#versus > a:hover {
+  background: inherit;
+}
+#versus > a > img {
+  display: block;
+}
+#versus > span {
   margin: 0 0 0 48px;
   font: 240px/1 Impact, sans-serif;
   letter-spacing: 6px;

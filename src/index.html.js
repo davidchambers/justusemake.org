@@ -95,9 +95,13 @@
       runner.
     </p>
     <div id="versus">
-! _('      <img alt="GNU" src="data:image/svg+xml;base64,' + fs.readFileSync('src/gnu.svg').toString('base64') + '" height="240">')
+      <a href="http://www.gnu.org/software/make/">
+! _('        <img alt="GNU" src="data:image/svg+xml;base64,' + fs.readFileSync('src/gnu.svg').toString('base64') + '" height="240">')
+      </a>
       <span>vs</span>
-! _('      <img alt="Grunt" src="data:image/svg+xml;base64,' + fs.readFileSync('src/grunt.svg').toString('base64') + '" height="240">')
+      <a href="http://gruntjs.com/">
+! _('        <img alt="Grunt" src="data:image/svg+xml;base64,' + fs.readFileSync('src/grunt.svg').toString('base64') + '" height="240">')
+      </a>
     </div>
     <p>
       Let’s start with the simplest task a build tool must support: copying

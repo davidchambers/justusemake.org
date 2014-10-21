@@ -66,7 +66,7 @@
 </head>
 <body>
   <a id="github-banner" href="https://github.com/davidchambers/justusemake.org">
-    <img src="http://aral.github.io/fork-me-on-github-retina-ribbons/right-orange@2x.png" alt="Fork me on GitHub">
+    <img src="http://aral.github.io/fork-me-on-github-retina-ribbons/right-chocolate@2x.png" alt="Fork me on GitHub">
   </a>
   <div class="prose">
     <h1>Just Use Make</h1>

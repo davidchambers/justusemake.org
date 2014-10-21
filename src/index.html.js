@@ -25,18 +25,24 @@
 !   '$(*F)': 'stem, without directory name',
 ! }
 !
+! function _(text) {
+!   console.log(text);
+! }
+!
+! function join(sep) {
+!   return function(list) {
+!     return list.join(sep)
+!   }
+! }
+!
 ! function read(filename) {
 !   return fs.readFileSync(filename, {encoding: 'utf8'})
 ! }
 !
 ! function decorate(language, text) {
-!   return '  ' + [
-!     '<pre>',
-!     '<code class="language-', language, '">',
-!     require('./lib/decorate/' + language)(text, '', []),
-!     '</code>',
-!     '</pre>',
-!   ].join('')
+!   return '  <pre><code class="language-' + language + '">' +
+!          require('./lib/decorate/' + language)(text, '', []) +
+!          '</code></pre>'
 ! }
 !
 <html>
@@ -44,15 +50,18 @@
   <meta charset="utf-8">
   <title>Just Use Make</title>
   <style>
-!=  read('style.css').replace(/^(?!$)/gm, '    ')
+! _(read('style.css').replace(/^(?!$)/gm, '    '))
 !
-!   Object.keys(automatic_variables).forEach(function(key) {
-!     console.log([
-!       '    span[data-content="' + key + '"]:hover:after {',
-!       '      content: "' + automatic_variables[key] + '";',
-!       '    }',
-!     ].join('\n'))
-!   })
+! Object.keys(automatic_variables)
+! .map(function(key) {
+!   return [
+!     '    span[data-content="' + key + '"]:hover:after {',
+!     '      content: "' + automatic_variables[key] + '";',
+!     '    }',
+!   ]
+! })
+! .map(join('\n'))
+! .map(_)
   </style>
 </head>
 <body>
@@ -91,7 +100,7 @@
       into <b>dist/assets</b>.
     </p>
   </div>
-!=  decorate('make', read('src/makefiles/COPY'))
+! _(decorate('make', read('src/makefiles/COPY')))
   <div class="prose">
     <p>
       In Make, the first step is to generate a list of files to build.
@@ -113,7 +122,7 @@
       Grunt requires a bit of set-up. First, install Grunt itself:
     </p>
   </div>
-!=  decorate('console', '$ npm install -g grunt-cli')
+! _(decorate('console', '$ npm install -g grunt-cli'))
   <div class="prose">
     <p>
       To copy files, we’ll need the
@@ -121,21 +130,21 @@
       plugin:
     </p>
   </div>
-!=  decorate('console', '$ npm install grunt-contrib-copy')
+! _(decorate('console', '$ npm install grunt-contrib-copy'))
   <div class="prose">
     <p>
       Next, we create a file named <b>Gruntfile.js</b> with some configuration
       to tell Grunt which files we want to copy and to where:
     </p>
   </div>
-!=  decorate('javascript', read('src/javascript/grunt-init-config.js'))
+! _(decorate('javascript', read('src/javascript/grunt-init-config.js')))
   <div class="prose">
     <p>
       This is a <em>lot</em> of configuration for a straightforward task.
       What’s more, Grunt is about as smart as its name suggests:
     </p>
   </div>
-!=  decorate('console', read('src/console/grunt-copy'))
+! _(decorate('console', read('src/console/grunt-copy')))
   <div class="prose">
     <p>
       Grunt goes ahead and copies the files each time. Make, thanks to the
@@ -143,7 +152,7 @@
       if one or more of its dependencies has changed:
     </p>
   </div>
-!=  decorate('console', read('src/console/make-copy'))
+! _(decorate('console', read('src/console/make-copy')))
   <div class="prose">
     <p>
       Right now our build step involves copying three images, but as our
@@ -157,10 +166,10 @@
     </p>
   </div>
   <pre>...</pre>
-!=  decorate('make', read('src/makefiles/COFFEE'))
+! _(decorate('make', read('src/makefiles/COFFEE')))
   <div class="prose">
     <p>Grunt example goes here.</p>
   </div>
-!=  decorate('make', read('src/makefiles/EXAMPLE_1'))
+! _(decorate('make', read('src/makefiles/EXAMPLE_1')))
 </body>
 </html>

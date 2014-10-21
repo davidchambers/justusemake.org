@@ -56,7 +56,7 @@
 ! .map(function(key) {
 !   return [
 !     '    span[data-content="' + key + '"]:hover:after {',
-!     '      content: "' + automatic_variables[key] + '";',
+!     '      content: " -- ' + automatic_variables[key] + '";',
 !     '    }',
 !   ]
 ! })

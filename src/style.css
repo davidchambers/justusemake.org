@@ -34,21 +34,20 @@ pre {
 pre > code {
   font-size: 12px;
   line-height: 16px;
+  color: #531;
 }
 .comment  { color: #999; }
 .silent   { color: #999; }
 .function,
 .keyword  { color: #f63; font-weight: bold; }
-.target.special { color: #693; }
+.target.special { color: #f63; }
 .targets  { font-weight: bold; }
-.recipe   { color: #369; }
-.string   { color: #39c; }
+.string   { color: #693; }
 .group    { color: #c93; }
 .auto-var { color: #c93; }
 .special-value { font-weight: bold; }
 .number   { color: #693; }
 .command  { font-weight: bold; }
-.output   { color: #999; }
 
 code.language-make span[data-content] {
   cursor: default;
